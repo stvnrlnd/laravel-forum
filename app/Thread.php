@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Thread extends Model
 {
     /**
-     * Undocumented function
+     * Undocumented function.
      *
      * @return void
      */
     public function path()
     {
-        return '/threads/' . $this->id;
+        return '/threads/'.$this->id;
     }
 
     public function replies()
