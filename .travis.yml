@@ -1,33 +1,26 @@
+dist: bionic
+
 language: php
 
-sudo: false
-
 php:
-  - 7.1
   - 7.2
   - 7.3
 
-env:
-  matrix:
-    - LARAVEL=5.7.*
-    - LARAVEL=5.8.*
-    - LARAVEL=^6.0
-    - LARAVEL=^7.0
+services:
+  - mysql
 
-matrix:
-  fast_finish: true
-  exclude:
-    - php: 7.1
-      env: LARAVEL=^6.0
-    - php: 7.1
-      env: LARAVEL=^7.0
-  allow_failures:
-    - env: LARAVEL=^7.0
+cache:
+  directories:
+    - node_modules
+    - vendor
 
-before_install:
-  - phpenv config-rm xdebug.ini || true
+before_script:
+  - cp .env.travis .env
+  - sudo mysql -e 'create database homestead;'
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+  - php artisan key:generate
+  - php artisan migrate
 
-install:
-  - travis_retry composer require "illuminate/contracts=${LARAVEL}" --dev --prefer-dist --no-interaction --no-suggest
-
-script: vendor/bin/phpunit --verbose
+script:
+  - vendor/bin/phpunit
