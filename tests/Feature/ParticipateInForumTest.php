@@ -3,10 +3,9 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ParticipateInForum extends TestCase
+class ParticipateInForumTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -29,7 +28,7 @@ class ParticipateInForum extends TestCase
         $thread = factory('App\Thread')->create();
         $reply = factory('App\Reply')->make();
 
-        $this->post($thread->path() . '/replies', $reply->toArray());
+        $this->post($thread->path().'/replies', $reply->toArray());
         $this->get($thread->path())
             ->assertSee($reply->body);
     }
