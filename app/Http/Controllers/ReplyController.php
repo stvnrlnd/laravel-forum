@@ -36,10 +36,12 @@ class ReplyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  \App\Channel  $channel
+     * @param  \App\Thread  $thread
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Thread $thread)
+    public function store($channel, Thread $thread, Request $request)
     {
         $thread->addReply([
             'user_id' => auth()->id(),
