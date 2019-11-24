@@ -59,7 +59,7 @@ class CreateThreadsTest extends TestCase
             ->assertSessionHasErrors('body');
     }
 
-    public function publishThread($overrides=  [])
+    public function publishThread($overrides = [])
     {
         $this->signIn();
 

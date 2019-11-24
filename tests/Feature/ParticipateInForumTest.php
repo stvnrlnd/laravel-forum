@@ -36,7 +36,7 @@ class ParticipateInForumTest extends TestCase
 
         $thread = create('App\Thread');
         $reply = make('App\Reply', [
-            'body' => null
+            'body' => null,
         ]);
 
         $this->post($thread->path().'/replies', $reply->toArray())

@@ -26,7 +26,6 @@ class ThreadTest extends TestCase
         $this->assertEquals("/threads/{$thread->channel->slug}/{$thread->id}", $thread->path());
     }
 
-
     /** @test */
     public function a_thread_has_replies()
     {
