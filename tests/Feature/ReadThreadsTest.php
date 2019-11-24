@@ -38,7 +38,7 @@ class ReadThreadsTest extends TestCase
     public function a_user_can_read_replies_to_a_thread()
     {
         $reply = create('App\Reply', [
-            'thread_id' => $this->thread->id
+            'thread_id' => $this->thread->id,
         ]);
 
         $this->get($this->thread->path())
