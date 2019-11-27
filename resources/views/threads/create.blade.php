@@ -17,7 +17,7 @@
                             <label for="selectChannel">Choose a Channel</label>
                             <select name="channel_id" id="selectChannel" class="form-control" required>
                                 <option value="">Choose One...</option>
-                                @foreach (App\Channel::all() as $channel)
+                                @foreach ($channels as $channel)
                                     <option value="{{ $channel->id }}"{{ old('channel_id') == $channel->id ? 'selected' : '' }}>{{ $channel->name }}</option>
                                 @endforeach
                             </select>
@@ -33,7 +33,7 @@
                             <textarea name="body" id="textareaBody" cols="30" rows="10" class="form-control" required>{{ old('body') }}</textarea>
                         </div>
 
-                        <div class="form-grou">
+                        <div class="form-group">
                             <button type="submit" class="btn btn-secondary">Publish</button>
                         </div>
 
