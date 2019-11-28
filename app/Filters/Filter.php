@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 abstract class Filter
 {
-    protected $request, $builder;
+    protected $request;
+    protected $builder;
     protected $filters = [];
 
     public function __construct(Request $request)

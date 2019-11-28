@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Channel;
-use App\Thread;
 use App\Filters\ThreadFilter;
+use App\Thread;
 use Illuminate\Http\Request;
 
 class ThreadController extends Controller
