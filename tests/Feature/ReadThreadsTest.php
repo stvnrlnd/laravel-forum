@@ -91,5 +91,4 @@ class ReadThreadsTest extends TestCase
 
         $this->assertEquals([3, 2, 0], array_column($repnonse, 'replies_count'));
     }
-
 }
