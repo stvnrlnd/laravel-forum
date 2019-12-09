@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class FavoritesTest extends TestCase
@@ -24,7 +23,7 @@ class FavoritesTest extends TestCase
 
         $reply = create('App\Reply');
 
-        $this->post('/replies/' . $reply->id . '/favorites');
+        $this->post('/replies/'.$reply->id.'/favorites');
         $this->assertCount(1, $reply->favorites);
     }
 
@@ -36,13 +35,12 @@ class FavoritesTest extends TestCase
         $reply = create('App\Reply');
 
         try {
-            $this->post('/replies/' . $reply->id . '/favorites');
-            $this->post('/replies/' . $reply->id . '/favorites');
+            $this->post('/replies/'.$reply->id.'/favorites');
+            $this->post('/replies/'.$reply->id.'/favorites');
         } catch (\Exception $e) {
             $this->fail('Did not expect to insert the same record set twice.');
         }
 
         $this->assertCount(1, $reply->favorites);
     }
-
 }
