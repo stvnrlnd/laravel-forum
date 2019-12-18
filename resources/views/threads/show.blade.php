@@ -5,8 +5,17 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card mb-3">
-                <div class="card-header">
-                    <a href="{{ route('profiles', $thread->creator) }}">{{ $thread->creator->name }}</a> posted: {{ $thread->title }}
+                <div class="card-header d-flex justify-content-between">
+                    <h4>
+                        <a href="{{ route('profiles', $thread->creator) }}">{{ $thread->creator->name }}</a> posted: {{ $thread->title }}
+                    </h4>
+                    @can('update', $thread)
+                        <form action="{{ $thread->path() }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-link">Delete Thread</button>
+                        </form>
+                    @endcan
                 </div>
 
                 <div class="card-body">

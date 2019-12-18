@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class CreateThreadsTest extends TestCase
+class ThreadsTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -57,6 +57,34 @@ class CreateThreadsTest extends TestCase
     {
         $this->publishThread(['body' => null])
             ->assertSessionHasErrors('body');
+    }
+
+    /** @test */
+    public function unauthorized_users_may_not_delete_threads()
+    {
+        $thread = create('App\Thread');
+
+        $this->delete($thread->path())
+            ->assertRedirect('/login');
+
+        $this->signIn();
+        $this->delete($thread->path())
+            ->assertStatus(403);
+    }
+
+    /** @test */
+    public function authorized_users_may_delete_threads()
+    {
+        $this->signIn();
+
+        $thread = create('App\Thread', ['user_id' => auth()->id()]);
+        $reply = create('App\Reply', ['thread_id' => $thread->id]);
+
+        $response = $this->json('DELETE', $thread->path());
+
+        $response->assertStatus(204);
+        $this->assertDatabaseMissing('threads', ['id' => $thread->id]);
+        $this->assertDatabaseMissing('replies', ['id' => $reply->id]);
     }
 
     public function publishThread($overrides = [])

@@ -7,7 +7,7 @@
     @foreach ($threads as $thread)
         <div class="card mb-3">
             <div class="card-header">
-                <a href="#">{{ $thread->creator->name }}</a> posted: {{ $thread->title }}
+                {{ $thread->creator->name }} posted: <a href="{{ $thread->path() }}">{{ $thread->title }}</a>
             </div>
 
             <div class="card-body">
