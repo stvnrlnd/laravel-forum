@@ -3,28 +3,32 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+    </div>
+    <div class="row">
         <div class="col-md-8">
             <div class="card mb-3">
-                <div class="card-header d-flex justify-content-between">
-                    <h4>
-                        <a href="{{ route('profiles', $thread->creator) }}">{{ $thread->creator->name }}</a> posted: {{ $thread->title }}
-                    </h4>
+                <div class="card-body">
+                    <h4>{{ $thread->title }}</h4>
+                    <p>
+                        Posted by <a href="{{ route('profiles', $thread->creator) }}">{{ $thread->creator->name }}</a>
+                    </p>
+
+                    <p>
+                        {{ $thread->body }}
+                    </p>
+
                     @can('update', $thread)
                         <form action="{{ $thread->path() }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-link">Delete Thread</button>
+                            <button type="submit" class="btn btn-danger">Delete Thread</button>
                         </form>
                     @endcan
-                </div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    {{ $thread->body }}
                 </div>
             </div>
 
