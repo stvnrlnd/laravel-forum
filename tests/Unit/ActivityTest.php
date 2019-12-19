@@ -2,10 +2,9 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 use App\Activity;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ActivityTest extends TestCase
 {
@@ -22,7 +21,7 @@ class ActivityTest extends TestCase
             'type' => 'created_thread',
             'user_id' => auth()->id(),
             'subject_id' => $thread->id,
-            'subject_type' => 'App\Thread'
+            'subject_type' => 'App\Thread',
         ]);
 
         $activity = Activity::first();
