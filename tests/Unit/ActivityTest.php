@@ -45,11 +45,11 @@ class ActivityTest extends TestCase
     {
         $this->signIn();
         create('App\Thread', [
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ], 2);
 
         auth()->user()->activity()->first()->update([
-            'created_at' => Carbon::now()->subWeek()
+            'created_at' => Carbon::now()->subWeek(),
         ]);
 
         $feed = Activity::feed(auth()->user());
@@ -62,5 +62,4 @@ class ActivityTest extends TestCase
             Carbon::now()->subWeek()->format('Y-m-d')
         ));
     }
-
 }
