@@ -12,16 +12,12 @@
     <div class="row">
         <h1>{{ $profileUser->name }}</h1>
 
-        @foreach ($threads as $thread)
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h4><a href="{{ $thread->path() }}">{{ $thread->title }}</a></h4>
-
-                    {{ $thread->body }}
-                </div>
-            </div>
+        @foreach ($activities as $date => $activity)
+            <h3>{{ $date }}</h3>
+            @foreach ($activity as $record)
+                @include("profiles.activities.{$record->type}", ['activity' => $record])
+            @endforeach
         @endforeach
-        {{ $threads->links() }}
     </div>
 </div>
 @endsection
