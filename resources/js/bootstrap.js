@@ -39,3 +39,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+window.Event = new Vue();
+
+window.flash = function (message) {
+    window.EventSource.$emit('flash', message);
+};

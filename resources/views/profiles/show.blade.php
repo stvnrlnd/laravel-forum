@@ -12,12 +12,15 @@
     <div class="row">
         <h1>{{ $profileUser->name }}</h1>
 
-        @foreach ($activities as $date => $activity)
-            <h3>{{ $date }}</h3>
-            @foreach ($activity as $record)
-                @include("profiles.activities.{$record->type}", ['activity' => $record])
-            @endforeach
+    </div>
+
+    @foreach ($activities as $date => $activity)
+    <div class="row">
+        <h3>{{ $date }}</h3>
+        @foreach ($activity as $record)
+            @include("profiles.activities.{$record->type}", ['activity' => $record])
         @endforeach
     </div>
+    @endforeach
 </div>
 @endsection
