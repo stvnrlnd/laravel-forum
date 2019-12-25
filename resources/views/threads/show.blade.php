@@ -13,7 +13,16 @@
         <div class="col-md-8">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h4>{{ $thread->title }}</h4>
+                    <div class="d-flex justify-content-between">
+                        <h4>{{ $thread->title }}</h4>
+                        @can('update', $thread)
+                            <form action="{{ $thread->path() }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete Thread</button>
+                            </form>
+                        @endcan
+                    </div>
                     <p>
                         Posted by <a href="{{ route('profiles', $thread->creator) }}">{{ $thread->creator->name }}</a>
                     </p>
@@ -22,13 +31,7 @@
                         {{ $thread->body }}
                     </p>
 
-                    @can('update', $thread)
-                        <form action="{{ $thread->path() }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete Thread</button>
-                        </form>
-                    @endcan
+
                 </div>
             </div>
 
