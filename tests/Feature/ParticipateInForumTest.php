@@ -73,4 +73,38 @@ class ParticipateInForumTest extends TestCase
         ]);
     }
 
+    /** @test */
+    public function unauthorized_users_cannot_update_replies()
+    {
+        $reply = create('App\Reply');
+
+        $this->patch("/replies/{$reply->id}")
+            ->assertRedirect('login');
+
+        $this->signIn()
+            ->delete("/replies/{$reply->id}")
+            ->assertStatus(403);
+    }
+
+    /** @test */
+    public function authorized_users_can_update_replies()
+    {
+        $this->signIn();
+
+        $reply = create('App\Reply', [
+            'user_id' => auth()->id()
+        ]);
+
+        $body = 'Updated body';
+
+        $this->patch("/replies/{$reply->id}", [
+            'body' => $body
+        ]);
+
+        $this->assertDatabaseHas('replies', [
+            'id' => $reply->id,
+            'body' => $body
+        ]);
+    }
+
 }
