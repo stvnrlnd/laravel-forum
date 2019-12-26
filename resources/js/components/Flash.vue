@@ -24,7 +24,7 @@
         },
 
         methods: {
-            flash() {
+            flash(message) {
                 this.body = message;
                 this.show = true;
 
