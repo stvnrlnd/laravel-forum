@@ -105,6 +105,7 @@ class ReplyController extends Controller
         if (request()->expectsJson()) {
             return response(['status' => 'Reply deleted.']);
         }
+
         return back();
     }
 }

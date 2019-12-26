@@ -69,7 +69,7 @@ class ParticipateInForumTest extends TestCase
             ->assertStatus(302);
 
         $this->assertDatabaseMissing('replies', [
-            'id' => $reply->id
+            'id' => $reply->id,
         ]);
     }
 
@@ -92,19 +92,18 @@ class ParticipateInForumTest extends TestCase
         $this->signIn();
 
         $reply = create('App\Reply', [
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ]);
 
         $body = 'Updated body';
 
         $this->patch("/replies/{$reply->id}", [
-            'body' => $body
+            'body' => $body,
         ]);
 
         $this->assertDatabaseHas('replies', [
             'id' => $reply->id,
-            'body' => $body
+            'body' => $body,
         ]);
     }
-
 }
