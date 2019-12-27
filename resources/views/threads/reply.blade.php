@@ -10,7 +10,9 @@
                         <button type="submit" class="btn btn-sm btn-warning ml-2" @click="editing = true">Edit</button>
                         <button type="submit" class="btn btn-sm btn-outline-danger" @click="destroy">Delete</button>
                     @endcan
-                    <favorite :reply="{{ $reply }}"></favorite>
+                    @auth
+                        <favorite :reply="{{ $reply }}"></favorite>
+                    @endauth
                 </div>
             </div>
 
@@ -22,7 +24,6 @@
                 </div>
             </div>
             <div v-else v-text="body"></div>
-
         </div>
     </div>
 </reply>

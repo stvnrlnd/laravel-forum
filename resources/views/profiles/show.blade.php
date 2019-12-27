@@ -11,10 +11,9 @@
     </div>
     <div class="row">
         <h1>{{ $profileUser->name }}</h1>
-
     </div>
 
-    @foreach ($activities as $date => $activity)
+    @forelse ($activities as $date => $activity)
     <div class="row">
         <h3>{{ $date }}</h3>
         @foreach ($activity as $record)
@@ -23,6 +22,8 @@
             @endif
         @endforeach
     </div>
-    @endforeach
+    @empty
+        <p>There is no activity for this user yet.</p>
+    @endforelse
 </div>
 @endsection
