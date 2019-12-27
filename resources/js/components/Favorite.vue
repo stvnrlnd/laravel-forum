@@ -1,12 +1,19 @@
 <template>
-    <button type="submit" :class="classes" @click="toggle">
+    <button type="submit" class="btn btn-sm btn-light" @click="toggle">
+        <font-awesome-icon :class="classes" :icon="icon"></font-awesome-icon>
         <span v-text="count"></span>
     </button>
 </template>
 
 <script>
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
     export default {
         props: ['reply'],
+
+        components: {
+            FontAwesomeIcon
+        },
 
         data() {
             return {
@@ -18,10 +25,15 @@
         computed: {
             classes() {
                 return [
-                    'btn',
-                    'btn-sm',
-                    this.active ? 'btn-primary' : 'btn-light'
+                    this.active ? 'text-danger' : ''
                 ]
+            },
+
+            icon() {
+                return [
+                    this.active ? 'fas' : 'far',
+                    'heart'
+                ];
             },
 
             endpoint() {

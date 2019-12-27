@@ -6,7 +6,12 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
+
+library.add(farHeart, fasHeart);
 
 /**
  * The following block of code may be used to automatically register your
@@ -27,6 +32,8 @@ Vue.component('reply', require('./components/Reply.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+ Vue.config.productionTip = false;
 
 const app = new Vue({
     el: '#app',
