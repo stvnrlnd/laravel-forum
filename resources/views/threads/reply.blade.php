@@ -10,14 +10,7 @@
                         <button type="submit" class="btn btn-sm btn-warning ml-2" @click="editing = true">Edit</button>
                         <button type="submit" class="btn btn-sm btn-outline-danger" @click="destroy">Delete</button>
                     @endcan
-                    <form action="/replies/{{ $reply->id }}/favorites" method="POST" class="d-inline ml-2">
-                        @csrf
-                        @method('POST')
-
-                        <button type="submit" class="btn btn-sm btn-light"{{ $reply->isFavorited() ? 'disabled' : '' }}>
-                            {{ $reply->favorites_count }} {{ Str::plural('favorite', $reply->favorites_count) }}
-                        </button>
-                    </form>
+                    <favorite :reply="{{ $reply }}"></favorite>
                 </div>
             </div>
 
