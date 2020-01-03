@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="d-flex justify-content-between mb-2">
                 <h5>
-                    <a :href="'/profiles/' + data.owner.name" v-text="data.owner.name"></a> said {{ data.created_at }}
+                    <a :href="'/profiles/' + data.owner.name" v-text="data.owner.name"></a> said <span v-text="ago"></span>
                 </h5>
                 <div>
                     <div class="d-inline-block" v-if="canUpdate">
@@ -30,6 +30,7 @@
 
 <script>
     import Favorite from './Favorite.vue';
+    import moment from 'moment';
 
     export default {
         props: ['data'],
@@ -47,6 +48,9 @@
         },
 
         computed: {
+            ago() {
+                return moment(this.data.created_at).fromNow();
+            },
             signedIn() {
                 return window.App.signedIn;
             },
