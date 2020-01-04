@@ -14,7 +14,7 @@
             @endif
 
             @forelse ($threads as $thread)
-            <div class="card">
+            <div class="card mb-2">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h4>
