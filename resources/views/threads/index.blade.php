@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <h1>Forum Threads</h1>
+            <h1>Threads</h1>
 
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
@@ -18,11 +18,18 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h4>
+                            @auth
+                                @if ($thread->hasUpdatesFor(auth()->user()))
+                                    <span class="badge badge-danger">New</span>
+                                @endif
+                            @endauth
                             <a href="{{ $thread->path() }}">
                                 {{ $thread->title }}
                             </a>
                         </h4>
-                        <strong>{{ $thread->replies_count }} {{ Str::plural('comment', $thread->replies_count) }}</strong>
+                        <div>
+                            <strong>{{ $thread->replies_count }} {{ Str::plural('comment', $thread->replies_count) }}</strong>
+                        </div>
                     </div>
                     {{ $thread->body }}
                 </div>
