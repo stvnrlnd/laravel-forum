@@ -8,10 +8,10 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart, faBell as farBell } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as fasHeart, faBell as fasBell } from '@fortawesome/free-solid-svg-icons';
 
-library.add(farHeart, fasHeart);
+library.add(farHeart, fasHeart, farBell, fasBell);
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,6 +26,7 @@ library.add(farHeart, fasHeart);
 
 Vue.component('flash', require('./components/Flash.vue').default);
 Vue.component('paginator', require('./components/Paginator.vue').default);
+Vue.component('user-notifications', require('./components/UserNotifications.vue').default);
 
 Vue.component('thread-view', require('./pages/Thread.vue').default);
 

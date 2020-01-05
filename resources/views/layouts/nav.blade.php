@@ -23,9 +23,11 @@
                         <a class="dropdown-item" href="/threads?unanswered">Unanswered Threads</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/threads/create">New Thread</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="/threads/create">New Thread</a>
+                    </li>
+                @endauth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Channels
@@ -51,6 +53,9 @@
                         </li>
                     @endif
                 @else
+
+                    <user-notifications></user-notifications>
+
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>

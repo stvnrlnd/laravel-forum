@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Notification;
 use Illuminate\Http\Request;
 
 class UserNotificationController extends Controller
@@ -82,8 +84,8 @@ class UserNotificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user, $notification)
+    public function destroy(User $user, Notification $notification)
     {
-        auth()->user()->notifications->findOrFail($notification)->markAsRead();
+        auth()->user()->notifications()->findOrFail($notification)->markAsRead();
     }
 }
