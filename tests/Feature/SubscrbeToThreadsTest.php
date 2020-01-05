@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class SubscrbeToThreadsTest extends TestCase
@@ -17,7 +16,7 @@ class SubscrbeToThreadsTest extends TestCase
 
         $thread = create('App\Thread');
 
-        $this->post($thread->path() . '/subscriptions');
+        $this->post($thread->path().'/subscriptions');
 
         $this->assertCount(1, $thread->fresh()->subscriptions);
     }
@@ -31,7 +30,7 @@ class SubscrbeToThreadsTest extends TestCase
 
         $thread->subscribe();
 
-        $this->delete($thread->path() . '/subscriptions');
+        $this->delete($thread->path().'/subscriptions');
 
         $this->assertCount(0, $thread->subscriptions);
     }

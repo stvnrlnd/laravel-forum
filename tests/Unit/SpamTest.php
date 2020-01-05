@@ -4,8 +4,6 @@ namespace Tests\Unit;
 
 use App\Inspections\Spam;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SpamTest extends TestCase
 {
@@ -32,5 +30,4 @@ class SpamTest extends TestCase
 
         $spam->detect('Hello World aaaaaaaaaa');
     }
-
 }

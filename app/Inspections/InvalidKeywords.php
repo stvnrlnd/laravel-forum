@@ -2,13 +2,10 @@
 
 namespace App\Inspections;
 
-use Exception;
-use App\Inspections\Spam;
-
 class InvalidKeywords extends Spam
 {
     protected $keywords = [
-        'yahoo customer support'
+        'yahoo customer support',
     ];
 
     public function detect($body)

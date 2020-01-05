@@ -2,9 +2,6 @@
 
 namespace App\Inspections;
 
-use Exception;
-use App\Inspections\Spam;
-
 class KeyHeldDown extends Spam
 {
     public function detect($body)

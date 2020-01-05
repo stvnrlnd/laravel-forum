@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Thread;
 use App\Channel;
-use Carbon\Carbon;
-use App\Inspections\Spam;
-use Illuminate\Http\Request;
 use App\Filters\ThreadFilter;
+use App\Inspections\Spam;
+use App\Thread;
+use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {

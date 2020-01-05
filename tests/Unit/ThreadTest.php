@@ -2,11 +2,10 @@
 
 namespace Tests\Unit;
 
-use Carbon\Carbon;
-use Tests\TestCase;
 use App\Notifications\ThreadWasUpdated;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
+use Tests\TestCase;
 
 class ThreadTest extends TestCase
 {
@@ -68,7 +67,6 @@ class ThreadTest extends TestCase
         Notification::assertSentTo(auth()->user(), ThreadWasUpdated::class);
     }
 
-
     /** @test */
     public function a_thread_belongs_to_a_channel()
     {
@@ -119,7 +117,7 @@ class ThreadTest extends TestCase
 
         $thread = create('App\Thread');
 
-        tap(auth()->user(), function($user) use ($thread) {
+        tap(auth()->user(), function ($user) use ($thread) {
             $this->assertTrue($thread->hasUpdatesFor($user));
 
             $user->read($thread);

@@ -2,12 +2,10 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Notifications\DatabaseNotification;
+use Tests\TestCase;
 
-class NotifactionsTest extends TestCase
+class NotificationsTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -27,14 +25,14 @@ class NotifactionsTest extends TestCase
 
         $thread->addReply([
             'user_id' => auth()->id(),
-            'body' => 'Reply body.'
+            'body' => 'Reply body.',
         ]);
 
         $this->assertCount(0, auth()->user()->fresh()->notifications);
 
         $thread->addReply([
             'user_id' => create('App\User')->id,
-            'body' => 'Reply body.'
+            'body' => 'Reply body.',
         ]);
 
         $this->assertCount(1, auth()->user()->fresh()->notifications);
@@ -45,7 +43,7 @@ class NotifactionsTest extends TestCase
     {
         create('App\Notification');
 
-        $this->assertCount(1, $this->getJson("/profiles/" . auth()->user()->name . "/notifications")->json());
+        $this->assertCount(1, $this->getJson('/profiles/'.auth()->user()->name.'/notifications')->json());
     }
 
     /** @test */
@@ -53,10 +51,10 @@ class NotifactionsTest extends TestCase
     {
         create('App\Notification');
 
-        tap(auth()->user() , function($user) {
+        tap(auth()->user(), function ($user) {
             $this->assertCount(1, $user->unreadNotifications);
 
-            $this->delete("/profiles/{$user->name}/notifications/" . $user->unreadNotifications->first()->id);
+            $this->delete("/profiles/{$user->name}/notifications/".$user->unreadNotifications->first()->id);
 
             $this->assertCount(1, $user->notifications);
         });
