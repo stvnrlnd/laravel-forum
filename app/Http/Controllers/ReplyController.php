@@ -98,7 +98,6 @@ class ReplyController extends Controller
         } catch (\Exception $e) {
             return response('Sorry, your reply could not be saved at this time.', 422);
         }
-
     }
 
     /**
