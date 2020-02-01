@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ReplyTest extends TestCase
 {
