@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Inspections\Spam;
 use App\Reply;
 use App\Thread;
 use Illuminate\Http\Request;
@@ -120,10 +119,8 @@ class ReplyController extends Controller
 
     public function validateReply()
     {
-        $this->validate(request(), [
-            'body' => 'required',
+        request()->validate([
+            'body' => 'required|spam_free',
         ]);
-
-        resolve(Spam::class)->detect(request('body'));
     }
 }

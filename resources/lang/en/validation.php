@@ -117,6 +117,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'spam_free' => 'The :attribute must not contain spam.',
 
     /*
     |--------------------------------------------------------------------------
