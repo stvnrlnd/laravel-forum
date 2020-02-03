@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class MentionUserTest extends TestCase
@@ -14,19 +13,19 @@ class MentionUserTest extends TestCase
     public function mentioned_users_in_a_reply_are_notified()
     {
         $john = create('App\User', [
-            'name' => 'JohnDoe'
+            'name' => 'JohnDoe',
         ]);
 
         $this->signIn($john);
 
         $jane = create('App\User', [
-            'name' => 'JaneDoe'
+            'name' => 'JaneDoe',
         ]);
 
         $thread = create('App\Thread');
 
         $reply = create('App\Reply', [
-            'body' => '@JaneDoe look at this! Also @FrankDoe'
+            'body' => '@JaneDoe look at this! Also @FrankDoe',
         ]);
 
         $this->json('post', $thread->path().'/replies', $reply->toArray());
@@ -35,7 +34,7 @@ class MentionUserTest extends TestCase
     }
 
     /** @test */
-    function it_can_fetch_all_mentioned_users_starting_with_the_given_characters()
+    public function it_can_fetch_all_mentioned_users_starting_with_the_given_characters()
     {
         create('App\User', ['name' => 'johndoe']);
         create('App\User', ['name' => 'johndoe2']);

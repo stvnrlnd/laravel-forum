@@ -33,7 +33,7 @@ class ReplyTest extends TestCase
     public function it_knows_which_users_have_been_mentioned()
     {
         $reply = make('App\Reply', [
-            'body' => '@JaneDoe wants to talke to @JohnDoe'
+            'body' => '@JaneDoe wants to talke to @JohnDoe',
         ]);
 
         $this->assertEquals(['JaneDoe', 'JohnDoe'], $reply->mentionedUsers());
@@ -43,7 +43,7 @@ class ReplyTest extends TestCase
     public function it_wraps_mentioned_usernames_in_the_body_within_anchor_tags()
     {
         $reply = make('App\Reply', [
-            'body' => 'Hello @JaneDoe.'
+            'body' => 'Hello @JaneDoe.',
         ]);
 
         $this->assertEquals(

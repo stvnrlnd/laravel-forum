@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePostRequest;
 use App\Reply;
 use App\Thread;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
-use App\Http\Requests\CreatePostRequest;
 
 class ReplyController extends Controller
 {
@@ -47,7 +46,7 @@ class ReplyController extends Controller
     {
         return $thread->addReply([
             'body' => request('body'),
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ])->load('owner');
     }
 

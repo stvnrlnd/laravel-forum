@@ -51,6 +51,7 @@ class Reply extends Model
     public function mentionedUsers()
     {
         preg_match_all('/@([\w\-]+)/', $this->body, $matches);
+
         return $matches[1];
     }
 
