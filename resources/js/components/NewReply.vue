@@ -21,6 +21,8 @@
 </template>
 
 <script>
+    import Tribute from "tributejs";
+
     export default {
         data() {
             return {
@@ -32,6 +34,24 @@
             signedIn() {
                 return window.App.signedIn;
             }
+        },
+
+        mounted() {
+            var tribute = new Tribute({
+                    collection: [{
+                        trigger: '@',
+                        values: function (query, callback) {
+                            axios.get('/api/users', {name: query})
+                                .then(({data}) => {
+                                    callback(data);
+                                });
+                        },
+                        lookup: 'name',
+                        fillAttr: 'name'
+                    }]
+                });
+
+            tribute.attach(document.getElementById("textareaBody"));
         },
 
         methods: {

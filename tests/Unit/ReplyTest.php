@@ -40,7 +40,7 @@ class ReplyTest extends TestCase
     }
 
     /** @test */
-    public function it_wraps_mentioned_usernames_in_the_body_within_anhor_tags()
+    public function it_wraps_mentioned_usernames_in_the_body_within_anchor_tags()
     {
         $reply = make('App\Reply', [
             'body' => 'Hello @JaneDoe.'
