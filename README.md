@@ -1,5 +1,6 @@
-# Laravel Forum
+<h1 align="center">Laravel Forum</h1>
 
-[![Build Status](https://travis-ci.com/stvnrlnd/laravel-forum.svg?branch=master)](https://travis-ci.com/stvnrlnd/laravel-forum)
-
-[![StyleCI](https://github.styleci.io/repos/222572931/shield?branch=master)](https://github.styleci.io/repos/222572931)
+<p align="center">
+    <a href="https://github.styleci.io/repos/222572931"><img src="https://github.styleci.io/repos/222572931/shield?branch=master" alt="StyleCI"></a>
+    <a href="https://travis-ci.com/stvnrlnd/laravel-forum"><img src="https://travis-ci.com/stvnrlnd/laravel-forum.svg?branch=master" alt="TravisCI"></a>
+</p>
