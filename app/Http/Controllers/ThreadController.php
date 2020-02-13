@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Channel;
-use App\Filters\ThreadFilter;
 use App\Thread;
+use App\Filters\ThreadFilter;
 use Illuminate\Http\Request;
 
 class ThreadController extends Controller
@@ -21,13 +21,7 @@ class ThreadController extends Controller
      */
     public function index(Channel $channel, ThreadFilter $filter)
     {
-        $threads = Thread::latest()->filter($filter);
-
-        if ($channel->exists) {
-            $threads->where('channel_id', $channel->id);
-        }
-
-        $threads = $threads->get();
+        $threads = $this->getThreads($channel, $filter);
 
         if (request()->wantsJson()) {
             return $threads;
@@ -127,5 +121,16 @@ class ThreadController extends Controller
         }
 
         return redirect('/threads');
+    }
+
+    protected function getThreads(Channel $channel, ThreadFilter $filter)
+    {
+        $threads = Thread::latest()->filter($filter);
+
+        if ($channel->exists) {
+            $threads->where('channel_id', $channel->id);
+        }
+
+        return $threads->paginate(25);
     }
 }
