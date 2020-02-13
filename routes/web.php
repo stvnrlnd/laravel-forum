@@ -41,3 +41,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('api/users', 'API\UserController@index');
+Route::post('api/users/{user}/avatar', 'API\UserAvatarController@store');
