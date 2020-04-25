@@ -115,5 +115,4 @@ class ReadThreadsTest extends TestCase
 
         $this->assertEquals(1, $thread->fresh()->visits);
     }
-
 }

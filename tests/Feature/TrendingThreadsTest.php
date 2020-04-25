@@ -3,15 +3,14 @@
 namespace Tests\Feature;
 
 use App\Trending;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class TrendingThreadsTest extends TestCase
 {
     use RefreshDatabase;
 
-    protected function SetUp():void
+    protected function SetUp(): void
     {
         parent::setUp();
 

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Thread;
 use App\Channel;
+use App\Filters\ThreadFilter;
+use App\Thread;
 use App\Trending;
 use Illuminate\Http\Request;
-use App\Filters\ThreadFilter;
 
 class ThreadController extends Controller
 {
@@ -30,7 +30,7 @@ class ThreadController extends Controller
 
         return view('threads.index', [
             'threads' => $threads,
-            'trending' => $trending->get()
+            'trending' => $trending->get(),
         ]);
     }
 
