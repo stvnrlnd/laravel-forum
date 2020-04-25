@@ -2,13 +2,12 @@
 
 namespace App;
 
-use App\RecordsVisits;
 use App\Events\ThreadReceivedNewReply;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-    use RecordsActivity, RecordsVisits;
+    use RecordsActivity;
 
     protected $guarded = [];
 
@@ -90,5 +89,10 @@ class Thread extends Model
     public function hasUpdatesFor($user)
     {
         return $this->updated_at > cache($user->visitedThreadCacheKey($this));
+    }
+
+    public function visits()
+    {
+        return new Visits($this);
     }
 }
