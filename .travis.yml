@@ -8,6 +8,7 @@ php:
 
 services:
   - mysql
+  - redis
 
 cache:
   directories:
