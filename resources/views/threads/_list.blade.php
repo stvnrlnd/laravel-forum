@@ -1,5 +1,5 @@
 @forelse ($threads as $thread)
-<div class="card mb-2">
+<div class="mb-2 card">
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <div>
@@ -22,7 +22,12 @@
                 <strong>{{ $thread->replies_count }} {{ Str::plural('comment', $thread->replies_count) }}</strong>
             </div>
         </div>
+
         {{ $thread->body }}
+
+    </div>
+    <div class="card-footer">
+        {{ $thread->visits() }} visits
     </div>
 </div>
 
