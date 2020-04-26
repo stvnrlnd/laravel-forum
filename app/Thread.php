@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Support\Str;
 use App\Events\ThreadReceivedNewReply;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Thread extends Model
 {
@@ -44,7 +44,7 @@ class Thread extends Model
         $slug = Str::slug($value);
 
         if (static::whereSlug($slug)->exists()) {
-            $slug = "{$slug}-" . $this->id;
+            $slug = "{$slug}-".$this->id;
         }
 
         $this->attributes['slug'] = $slug;

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Thread;
 use App\Channel;
-use App\Trending;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Filters\ThreadFilter;
+use App\Thread;
+use App\Trending;
+use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
@@ -63,7 +62,7 @@ class ThreadController extends Controller
             'user_id' => auth()->id(),
             'channel_id' => request('channel_id'),
             'title' => request('title'),
-            'body' => request('body')
+            'body' => request('body'),
         ]);
 
         if (request()->wantsJson()) {
