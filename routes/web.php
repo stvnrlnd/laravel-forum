@@ -15,11 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/threads', 'ThreadController@index');
+Route::get('/threads', 'ThreadController@index')->name('threads');
 Route::get('/threads/create', 'ThreadController@create');
 Route::get('/threads/{channel}', 'ThreadController@index');
 Route::get('/threads/{channel}/{thread}/replies', 'ReplyController@index');
-Route::post('/threads', 'ThreadController@store');
+Route::post('/threads', 'ThreadController@store')->middleware('must-be-confirmed');
 Route::get('/threads/{channel}/{thread}', 'ThreadController@show');
 Route::delete('/threads/{channel}/{thread}', 'ThreadController@destroy');
 Route::post('/threads/{channel}/{thread}/replies', 'ReplyController@store');
@@ -39,6 +39,8 @@ Route::delete('/profiles/{user}/notifications/{notification}', 'UserNotification
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/register/confirm', 'Auth\RegisterConfirmationController@index');
 
 Route::get('api/users', 'API\UserController@index');
 Route::post('api/users/{user}/avatar', 'API\UserAvatarController@store');
