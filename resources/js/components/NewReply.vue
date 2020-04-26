@@ -30,12 +30,6 @@
             };
         },
 
-        computed: {
-            signedIn() {
-                return window.App.signedIn;
-            }
-        },
-
         mounted() {
             var tribute = new Tribute({
                     collection: [{

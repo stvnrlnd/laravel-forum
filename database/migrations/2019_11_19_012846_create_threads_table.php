@@ -19,10 +19,16 @@ class CreateThreadsTable extends Migration
             $table->unsignedBigInteger('channel_id');
             $table->unsignedBigInteger('replies_count')->default(0);
             $table->unsignedBigInteger('visits')->default(0);
+            $table->unsignedBigInteger('best_reply_id')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->string('title');
             $table->text('body');
             $table->timestamps();
+
+            $table->foreign('best_reply_id')
+                ->references('id')
+                ->on('replies')
+                ->onDelete('set null');
         });
     }
 
