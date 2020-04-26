@@ -2,13 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\User;
-use Tests\TestCase;
 use App\Mail\PleaseConfirmYourEmail;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
+use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
@@ -23,7 +21,7 @@ class RegistrationTest extends TestCase
             'name' => 'Bob',
             'email' => 'bob@blob.gob',
             'password' => 'BadPassword',
-            'password_confirmation' => 'BadPassword'
+            'password_confirmation' => 'BadPassword',
         ]);
 
         Mail::assertQueued(PleaseConfirmYourEmail::class);
@@ -38,7 +36,7 @@ class RegistrationTest extends TestCase
             'name' => 'Bob',
             'email' => 'bob@blob.gob',
             'password' => 'BadPassword',
-            'password_confirmation' => 'BadPassword'
+            'password_confirmation' => 'BadPassword',
         ]);
 
         $user = User::whereName('Bob')->first();
@@ -46,7 +44,7 @@ class RegistrationTest extends TestCase
         $this->assertFalse($user->confirmed);
         $this->assertNotNull($user->confirmation_token);
 
-        $response = $this->get('register/confirm?token=' . $user->confirmation_token)
+        $response = $this->get('register/confirm?token='.$user->confirmation_token)
             ->assertRedirect(route('threads'));
 
         $this->assertTrue($user->fresh()->confirmed);
