@@ -29,7 +29,7 @@
         "@fortawesome/free-regular-svg-icons": "^5.13.0",
         "@fortawesome/free-solid-svg-icons": "^5.13.0",
         "@fortawesome/vue-fontawesome": "^0.1.9",
-        "moment": "^2.24.0",
+        "moment": "^2.26.0",
         "tributejs": "^5.1.3"
     }
 }
