@@ -66,6 +66,12 @@ class User extends Authenticatable
         $this->save();
     }
 
+    /** @test */
+    public function isAdmin()
+    {
+        return in_array($this->name, ['JohnDoe']);
+    }
+
     public function read($thread)
     {
         cache()->forever(
