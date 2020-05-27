@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Channel;
-use App\Filters\ThreadFilter;
 use App\Thread;
+use App\Channel;
 use App\Trending;
+use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
+use App\Filters\ThreadFilter;
 
 class ThreadController extends Controller
 {
@@ -50,12 +51,13 @@ class ThreadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Recaptcha $recaptcha)
     {
         request()->validate([
             'channel_id' => 'required|exists:channels,id',
             'title' => 'required|spam_free',
             'body' => 'required|spam_free',
+            'g-recaptcha-response' => ['required', $recaptcha]
         ]);
 
         $thread = Thread::create([
