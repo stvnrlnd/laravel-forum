@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <thread-view :initial-replies-count="{{ $thread->replies_count }}" inline-template>
+    <thread-view :thread="{{ $thread }}" inline-template>
         <div class="container">
             <div class="row">
                 @if (session('status'))
@@ -12,7 +12,7 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <div class="card mb-3">
+                    <div class="mb-3 card">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h4>{{ $thread->title }}</h4>
@@ -42,7 +42,9 @@
                             by <a href="#">{{ $thread->creator->name }}</a>,
                             and currently has <span v-text="repliesCount"></span> {{ Str::plural('comment', $thread->replies_count) }}.</p>
 
-                            <subscribe-button :active="{{ json_encode($thread->isSubscribedTo) }}"></subscribe-button>
+                            <subscribe-button v-if="signedIn" :active="{{ json_encode($thread->isSubscribedTo) }}"></subscribe-button>
+
+                            <button v-if="authorize('isAdmin')" v-text="locked ? 'Unlock' : 'Lock'" @click="toggleLock" class="btn btn-light"></button>
                         </div>
                     </div>
                 </div>

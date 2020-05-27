@@ -6,7 +6,9 @@
 
         <paginator :dataSet="dataSet" @changed="fetch"></paginator>
 
-        <new-reply @created="add"></new-reply>
+        <p v-if="$parent.locked">This thread has been locked by the admin.</p>
+        <new-reply v-else @created="add"></new-reply>
+
     </div>
 </template>
 
@@ -25,22 +27,22 @@
             collection
         ],
 
-        data() {
+        data () {
             return {
                 dataSet: false
             }
         },
 
-        created() {
+        created () {
             this.fetch();
         },
 
         methods: {
-            fetch(page) {
+            fetch (page) {
                 axios.get(this.url(page))
                     .then(this.refresh);
             },
-            url(page) {
+            url (page) {
                 if (! page) {
                     let query = location.search.match(/page=(\d+)/);
 
@@ -48,7 +50,7 @@
                 }
                 return `${location.pathname}/replies?page=${page}`;
             },
-            refresh({data}) {
+            refresh ({data}) {
                 this.dataSet = data;
                 this.items = data.data;
 
