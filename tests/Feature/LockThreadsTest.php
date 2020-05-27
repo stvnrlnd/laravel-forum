@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class LockThreadsTest extends TestCase
@@ -19,9 +18,9 @@ class LockThreadsTest extends TestCase
 
         $thread->lock();
 
-        $this->post($thread->path() . '/replies', [
+        $this->post($thread->path().'/replies', [
             'body' => 'Foobar',
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ])
             ->assertStatus(422);
     }
@@ -32,13 +31,13 @@ class LockThreadsTest extends TestCase
         $this->signIn();
 
         $thread = create('App\Thread', [
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ]);
 
         $this->post(route('locked-threads.store', $thread))
             ->assertStatus(403);
 
-        $this->assertFalse(!! $thread->fresh()->locked);
+        $this->assertFalse((bool) $thread->fresh()->locked);
     }
 
     /** @test */
@@ -47,11 +46,11 @@ class LockThreadsTest extends TestCase
         $this->signIn(factory('App\User')->states('administrator')->create());
 
         $thread = create('App\Thread', [
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ]);
 
         $this->post(route('locked-threads.store', $thread));
 
-        $this->assertTrue(!! $thread->fresh()->locked);
+        $this->assertTrue((bool) $thread->fresh()->locked);
     }
 }

@@ -82,7 +82,7 @@ class Thread extends Model
     public function lock()
     {
         $this->update([
-            'locked' => true
+            'locked' => true,
         ]);
     }
 
