@@ -61,7 +61,7 @@ class LockThreadsTest extends TestCase
 
         $thread = create('App\Thread', [
             'user_id' => auth()->id(),
-            'locked' => false,
+            'locked' => true,
         ]);
 
         $this->delete(route('locked-threads.destroy', $thread));
