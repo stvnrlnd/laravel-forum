@@ -115,7 +115,14 @@ class ThreadController extends Controller
      */
     public function update(Request $request, Channel $channel, Thread $thread)
     {
-        //
+        $this->authorize('update', $thread);
+
+        $thread->update(request()->validate([
+            'title' => 'required|spam_free',
+            'body' => 'required|spam_free',
+        ]));
+
+        return $thread;
     }
 
     /**

@@ -17,10 +17,12 @@ Route::get('/', function () {
 
 Route::get('/threads', 'ThreadController@index')->name('threads');
 Route::get('/threads/create', 'ThreadController@create');
-Route::get('/threads/{channel}', 'ThreadController@index');
 Route::get('/threads/{channel}/{thread}/replies', 'ReplyController@index');
-Route::post('/threads', 'ThreadController@store')->middleware('must-be-confirmed');
 Route::get('/threads/{channel}/{thread}', 'ThreadController@show');
+Route::patch('/threads/{channel}/{thread}', 'ThreadController@update');
+Route::delete('/threads/{channel}/{thread}', 'ThreadController@destroy');
+Route::post('/threads', 'ThreadController@store')->middleware('must-be-confirmed');
+Route::get('/threads/{channel}', 'ThreadController@index');
 
 Route::post('/locked-threads/{thread}', 'LockedThreadController@store')
     ->middleware('admin')
@@ -29,7 +31,6 @@ Route::delete('/locked-threads/{thread}', 'LockedThreadController@destroy')
     ->middleware('admin')
     ->name('locked-threads.destroy');
 
-Route::delete('/threads/{channel}/{thread}', 'ThreadController@destroy');
 Route::post('/threads/{channel}/{thread}/replies', 'ReplyController@store');
 Route::patch('/replies/{reply}', 'ReplyController@update');
 Route::delete('/replies/{reply}', 'ReplyController@destroy')->name('replies.destroy');

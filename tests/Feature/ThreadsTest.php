@@ -118,6 +118,49 @@ class ThreadsTest extends TestCase
     }
 
     /** @test */
+    public function a_thread_requires_a_title_and_body_to_be_updated()
+    {
+        $this->signIn();
+
+        $thread = create('App\Thread', ['user_id' => auth()->id()]);
+
+        $this->patch($thread->path(), [
+            'title' => 'New Thread Title'
+        ])->assertSessionHasErrors('body');
+
+        $this->patch($thread->path(), [
+            'body' => 'New thread body'
+        ])->assertSessionHasErrors('title');
+    }
+
+    /** @test */
+    public function unauthorized_users_may_not_update_threads()
+    {
+        $thread = create('App\Thread');
+
+        $this->signIn();
+
+        $this->patch($thread->path(), [])
+            ->assertStatus(403);
+    }
+
+    /** @test */
+    public function a_thread_can_be_updated()
+    {
+        $this->signIn();
+
+        $thread = create('App\Thread', ['user_id' => auth()->id()]);
+
+        $this->patch($thread->path(), [
+            'title' => 'New Thread Title',
+            'body' => 'New thread body'
+        ]);
+
+        $this->assertEquals('New Thread Title', $thread->fresh()->title);
+        $this->assertEquals('New thread body', $thread->fresh()->body);
+    }
+
+    /** @test */
     public function unauthorized_users_may_not_delete_threads()
     {
         $thread = create('App\Thread');
