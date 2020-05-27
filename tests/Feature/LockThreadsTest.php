@@ -15,7 +15,7 @@ class LockThreadsTest extends TestCase
         $this->signIn();
 
         $thread = create('App\Thread', [
-            'locked' => true
+            'locked' => true,
         ]);
 
         $this->post($thread->path().'/replies', [
@@ -61,7 +61,7 @@ class LockThreadsTest extends TestCase
 
         $thread = create('App\Thread', [
             'user_id' => auth()->id(),
-            'locked' => false
+            'locked' => false,
         ]);
 
         $this->delete(route('locked-threads.destroy', $thread));
