@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Thread;
 use App\Channel;
-use App\Trending;
-use App\Rules\Recaptcha;
-use Illuminate\Http\Request;
 use App\Filters\ThreadFilter;
+use App\Rules\Recaptcha;
+use App\Thread;
+use App\Trending;
+use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
@@ -57,7 +57,7 @@ class ThreadController extends Controller
             'channel_id' => 'required|exists:channels,id',
             'title' => 'required|spam_free',
             'body' => 'required|spam_free',
-            'g-recaptcha-response' => ['required', $recaptcha]
+            'g-recaptcha-response' => ['required', $recaptcha],
         ]);
 
         $thread = Thread::create([

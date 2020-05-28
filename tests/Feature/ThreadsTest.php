@@ -3,10 +3,10 @@
 namespace Tests\Feature;
 
 use App\Activity;
-use Tests\TestCase;
 use App\Rules\Recaptcha;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use Tests\TestCase;
 
 class ThreadsTest extends TestCase
 {
@@ -48,7 +48,7 @@ class ThreadsTest extends TestCase
     {
         $response = $this->publishThread([
             'title' => 'Thread Title',
-            'body' => 'This is the body for the test thread'
+            'body' => 'This is the body for the test thread',
         ]);
 
         $this->get($response->headers->get('Location'))
@@ -125,11 +125,11 @@ class ThreadsTest extends TestCase
         $thread = create('App\Thread', ['user_id' => auth()->id()]);
 
         $this->patch($thread->path(), [
-            'title' => 'New Thread Title'
+            'title' => 'New Thread Title',
         ])->assertSessionHasErrors('body');
 
         $this->patch($thread->path(), [
-            'body' => 'New thread body'
+            'body' => 'New thread body',
         ])->assertSessionHasErrors('title');
     }
 
@@ -153,7 +153,7 @@ class ThreadsTest extends TestCase
 
         $this->patch($thread->path(), [
             'title' => 'New Thread Title',
-            'body' => 'New thread body'
+            'body' => 'New thread body',
         ]);
 
         $this->assertEquals('New Thread Title', $thread->fresh()->title);
