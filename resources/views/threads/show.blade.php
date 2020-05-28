@@ -11,27 +11,8 @@
                 @endif
             </div>
             <div class="row">
-                <div class="col-md-8">
-                    <div class="mb-3 card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <h4>{{ $thread->title }}</h4>
-                                @can('update', $thread)
-                                    <form action="{{ $thread->path() }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete Thread</button>
-                                    </form>
-                                @endcan
-                            </div>
-                            <p>
-                                Posted by <a href="{{ route('profiles', $thread->creator) }}">{{ $thread->creator->name }}</a>
-                            </p>
-                            <p>
-                                {{ $thread->body }}
-                            </p>
-                        </div>
-                    </div>
+                <div class="col-md-8" v-cloak>
+                    @include('threads._thread')
 
                     <replies @added="repliesCount++" @removed="repliesCount--"></replies>
                 </div>
