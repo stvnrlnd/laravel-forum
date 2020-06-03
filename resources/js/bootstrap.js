@@ -47,7 +47,6 @@ window.flash = function (message, level = 'success') {
     window.events.$emit('flash', {message, level});
 };
 
-
 /**
  * Custom Mixins
  */

@@ -17,6 +17,20 @@
             {{ $threads->links() }}
         </div>
         <div class="col-md-4">
+            <div class="mb-3 card">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <form action="/threads/search" method="GET">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="q" id="" placeholder="Search for something...">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             @if (count($trending))
                 <div class="card">
                     <div class="card-header">Trending Threads</div>
