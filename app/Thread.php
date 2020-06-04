@@ -2,13 +2,11 @@
 
 namespace App;
 
-use App\Reply;
-use App\ThreadSubscription;
+use App\Events\ThreadReceivedNewReply;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
-use App\Events\ThreadReceivedNewReply;
 use Stevebauman\Purify\Facades\Purify;
-use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {

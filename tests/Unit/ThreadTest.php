@@ -140,7 +140,7 @@ class ThreadTest extends TestCase
     public function a_thread_body_is_sanitized_automatically()
     {
         $thread = make('App\Thread', [
-            'body' => '<script>alert("Gotcha fool")</script><p>but this is valid</p>'
+            'body' => '<script>alert("Gotcha fool")</script><p>but this is valid</p>',
         ]);
 
         $this->assertEquals($thread->body, '<p>but this is valid</p>');
