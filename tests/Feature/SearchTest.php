@@ -3,9 +3,8 @@
 namespace Tests\Feature;
 
 use App\Thread;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class SearchTest extends TestCase
 {
@@ -20,7 +19,7 @@ class SearchTest extends TestCase
 
         create('App\Thread', [], 2);
         create('App\Thread', [
-            'body' => "The thread with the {$search} term"
+            'body' => "The thread with the {$search} term",
         ], 2);
 
         do {
@@ -28,7 +27,6 @@ class SearchTest extends TestCase
 
             $results = $this->getJson("/threads/search?q={$search}")->json()['data'];
         } while (empty($results));
-
 
         $this->assertCount(2, $results);
 
