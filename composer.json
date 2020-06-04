@@ -16,7 +16,8 @@
         "laravel/framework": "^6.2",
         "laravel/scout": "^8.0",
         "laravel/tinker": "^2.2",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "stevebauman/purify": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

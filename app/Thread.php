@@ -2,10 +2,13 @@
 
 namespace App;
 
-use App\Events\ThreadReceivedNewReply;
-use Illuminate\Database\Eloquent\Model;
+use App\Reply;
+use App\ThreadSubscription;
 use Illuminate\Support\Str;
 use Laravel\Scout\Searchable;
+use App\Events\ThreadReceivedNewReply;
+use Stevebauman\Purify\Facades\Purify;
+use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
@@ -120,5 +123,10 @@ class Thread extends Model
     public function hasUpdatesFor($user)
     {
         return $this->updated_at > cache($user->visitedThreadCacheKey($this));
+    }
+
+    public function getBodyAttribute($body)
+    {
+        return Purify::clean($body);
     }
 }

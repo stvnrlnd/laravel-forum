@@ -9,7 +9,7 @@
             </form>
         </div>
 
-        <textarea name="" id="" cols="30" rows="10" class="form-control" v-model="form.body"></textarea>
+        <wysiwyg v-model="form.body"></wysiwyg>
     </div>
     <div class="card-footer text-muted">
         <button class="btn btn-sm btn-warning" @click="reset">Cancel</button>
@@ -25,7 +25,7 @@
         <p>
             Posted by <a href="{{ route('profiles', $thread->creator) }}">{{ $thread->creator->name }}</a>
         </p>
-        <p v-text="body"></p>
+        <div v-html="body"></div>
     </div>
     @can('update', $thread)
         <div class="card-footer text-muted">

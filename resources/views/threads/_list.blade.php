@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            {{ $thread->body }}
+            {!! $thread->body !!}
 
         </div>
         <div class="card-footer">
