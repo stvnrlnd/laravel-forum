@@ -5,3 +5,19 @@
     <a href="https://travis-ci.com/stvnrlnd/laravel-forum"><img src="https://travis-ci.com/stvnrlnd/laravel-forum.svg?branch=master" alt="TravisCI"></a>
     <a href="https://dependabot.com"><img src="https://api.dependabot.com/badges/status?host=github&repo=stvnrlnd/laravel-forum" alt="Depedabot"></a>
 </p>
+
+## Prerequisites
+
+TODO
+
+## Installation
+
+### Step 1: Project Setup
+
+Begin by cloning this repository and installing the Composer & NPM dependencies.
+
+```bash
+git clone git@github.com:stvnrlnd/laravel-forum.git
+cd laravel-forum && composer install && npm install
+php artisan key:generate
+```
