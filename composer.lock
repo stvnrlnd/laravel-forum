@@ -1013,16 +1013,16 @@
         },
         {
             "name": "laravel/tinker",
-            "version": "v2.4.0",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "cde90a7335a2130a4488beb68f4b2141869241db"
+                "reference": "58424c24e8aec31c3a3ac54eb3adb15e8a0a067b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/cde90a7335a2130a4488beb68f4b2141869241db",
-                "reference": "cde90a7335a2130a4488beb68f4b2141869241db",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/58424c24e8aec31c3a3ac54eb3adb15e8a0a067b",
+                "reference": "58424c24e8aec31c3a3ac54eb3adb15e8a0a067b",
                 "shasum": ""
             },
             "require": {
@@ -1073,7 +1073,7 @@
                 "laravel",
                 "psysh"
             ],
-            "time": "2020-04-07T15:01:31+00:00"
+            "time": "2020-08-11T19:28:08+00:00"
         },
         {
             "name": "league/commonmark",
@@ -1503,16 +1503,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.4.0",
+            "version": "v4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120"
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
-                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
                 "shasum": ""
             },
             "require": {
@@ -1520,8 +1520,8 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.5",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
+                "ircmaxell/php-yacc": "^0.0.6",
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -1529,7 +1529,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.8-dev"
                 }
             },
             "autoload": {
@@ -1551,7 +1551,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-04-10T16:34:50+00:00"
+            "time": "2020-08-09T10:23:20+00:00"
         },
         {
             "name": "opis/closure",
@@ -1970,16 +1970,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.3",
+            "version": "v0.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "2bde2fa03e05dff0aee834598b951d6fc7c6fe02"
+                "reference": "a8aec1b2981ab66882a01cce36a49b6317dc3560"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2bde2fa03e05dff0aee834598b951d6fc7c6fe02",
-                "reference": "2bde2fa03e05dff0aee834598b951d6fc7c6fe02",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/a8aec1b2981ab66882a01cce36a49b6317dc3560",
+                "reference": "a8aec1b2981ab66882a01cce36a49b6317dc3560",
                 "shasum": ""
             },
             "require": {
@@ -2038,7 +2038,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2020-04-07T06:44:48+00:00"
+            "time": "2020-05-03T19:32:03+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -3294,7 +3294,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -3371,7 +3371,7 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
@@ -3444,7 +3444,7 @@
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php73.git",
@@ -3520,7 +3520,7 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
